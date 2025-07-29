@@ -13,5 +13,9 @@ return [
      * | You might want to add more role-based emails like 'admin', 'support', or 'noreply'.  
      * | (No worries — these are already included. You’re ahead of the game 😝)
      */
-    "list" => [],
+    "list" => [
+        // "admin",
+        // "support",
+        // "noreply"
+    ],
 ];

@@ -1061,12 +1061,11 @@ class RoleBasedList {
      * @return array A unique, lowercase list of role-based email prefixes.
      */
     public static function all(): array {
-        $customList = config('role_based.list', []);
         $onlyCustom = config('role_based.only_custom', false);
 
         // Sanity check: makes sure we have a valid value, even if config is misconfigured
-        $customList = is_array($customList) ? $customList : [];
         $onlyCustom = is_bool($onlyCustom) ? $onlyCustom : false;
+        $customList = self::sanitizeCustomList();
 
         return $onlyCustom
             ? array_unique(array_map('strtolower', $customList))
@@ -1080,6 +1079,18 @@ class RoleBasedList {
      */
     public static function internal(): array {
         return array_merge(...array_values(self::$internalList));
+    }
+
+    /**
+     * Sanitizes the custom list of role-based email prefixes.
+     * 
+     * @return array
+     */
+    private static function sanitizeCustomList(): array {
+        $customList = config('role_based.list', []);
+        $customList = is_array($customList) ? $customList : [];
+
+        return array_filter($customList, fn($item) => is_scalar($item) || $item === null || $item instanceof Stringable);
     }
 
 }
