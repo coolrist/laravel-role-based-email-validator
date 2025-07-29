@@ -1,0 +1,44 @@
+{
+    "name": "coolrist/role-based-email-validator",
+    "description": "Laravel custom rule to detect role-based emails.",
+    "keywords": [
+        "laravel",
+        "validation",
+        "custom rule",
+        "email validation",
+        "role-based email",
+        "php",
+        "form validation",
+        "regex",
+        "rules",
+        "security",
+        "user roles",
+        "laravel package"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cool Rist",
+            "email": "coolrist98@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Coolrist\\RoleBasedEmailValidator\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^11.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Coolrist\\RoleBasedEmailValidator\\AppServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
